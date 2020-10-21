@@ -1,0 +1,133 @@
+.single-task {
+    display: flex;
+    flex-direction: column;   
+
+    margin-top: 1rem;
+    height: 18rem;
+    font-family:'Roboto',sans-serif;
+    color: black;
+    background-color: #9c9c9c;
+    padding: 1.5rem;
+}    
+#task-job {
+    font-size: 1em; 
+    border-radius: 10px; 
+}
+#added-by{
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+#bottom {
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+#notes{
+    font-size: .8rem;
+    min-height: 7rem;
+    margin-top: 1rem;
+}
+#back-forward {
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    align-items: flex-end;
+    margin-bottom: .5rem;
+}
+#update-bar{
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    width: 76%;
+    justify-content: space-between;
+    background-color: bisque;
+    border-radius: 1rem;
+}
+
+#left-button {
+    width: 50%;
+    border: none;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.btn-name {
+    display: flex;
+    margin: .1rem;
+    font-size: .8rem;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+#right-button {
+    width: 50%;
+    border: none;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem; 
+}
+
+button{
+    background-color: bisque;
+}
+#left {
+    display: inline-block;
+    border-radius: 4rem;
+}
+#right {
+    display: inline-block;
+    border-radius: 60px;
+}
+
+#edit-delete {
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+   
+}
+#lower-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    width: 76%;
+    border-radius: 1rem;
+}
+#btn-wrap {
+    height: 100%;
+    width: 50%;
+    background-color: bisque;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+#btn-wrap a #edit-btn {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+#edit-btn {
+    border: none;
+}
+
+#delete-btn {
+    width: 50%;
+    height: 100%;
+    border: none;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem; 
+}
+button:hover {
+     background-color: #e3796d;
+}
+/*
+@media all and (max-width:30em){
+    #left{
+    display:block;
+    margin:0.2em auto;
+    }
+}*/
