@@ -28,10 +28,10 @@ const EditTask = (props) => {
         .catch(function(error) {
             console.log(error);
         })
-    });
+    },[]);
 
     const onChangeTask = (e) => {
-        setTaskEdit({ ...taskEdit, task_job: e.target.value });
+        setTaskEdit({ ...taskEdit,  task_job: e.target.value });
     }
 
     const onChangeAddedBy = (e) => {
@@ -44,7 +44,6 @@ const EditTask = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         
-       
         axios.post('http://localhost:4000/tasks/'+props.match.params.id, taskEdit)
             .then(res => console.log(props.match.params.id + res.data))
             .then(() => setTaskEdit(() => ({
@@ -54,10 +53,10 @@ const EditTask = (props) => {
                 })
             ))
             .catch(error => console.log(error)
-        )
+        );
     }           
 
-    if (taskEdit.returnToList === true){
+   if (taskEdit.returnToList === true){
         return <Redirect to='/' />
     }
     return (
@@ -97,13 +96,3 @@ const EditTask = (props) => {
 }
 
 export default EditTask;
-
- /*const obj = {
-            task_job: task_job,
-            added_by: added_by,
-            notes: notes,
-            task_status: task_status,
-            returnToList: false
-        };
-        console.log(obj);
-        console.log(this.props.match.params.id);*/
