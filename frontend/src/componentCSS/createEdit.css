@@ -1,0 +1,61 @@
+.create-edit-form {
+	background-color: #0e0e0e;
+	display: flex;
+	width: 66%;
+	height: 50vh;
+	flex-direction: column;
+	font-family: "Sintony", sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 2rem;
+	align-self: flex-start;
+}
+h1 {
+	text-align: center;
+	font-family: "Monoton", sans-serif;
+	color: #e26e62;
+	margin: 2rem;
+}
+#submit-cells {
+	display: flex;
+	flex-direction: column;
+}
+.form-group {
+	display: flex;
+	margin-left: 10rem;
+	justify-content: left;
+}
+.form-group label {
+	display: flex;
+	text-align: right;
+	align-items: center;
+	margin: 0.5rem;
+}
+.form-control {
+	margin: 0.4rem;
+	padding: 0.3rem;
+	width: 30rem;
+	border: none;
+	border-radius: 0.6rem;
+	background-color: #9c9c9c;
+}
+.added-by {
+	margin: 0.4rem;
+	padding: 0.3rem;
+	width: 27.5rem;
+	border: none;
+	border-radius: 0.6rem;
+	background-color: #9c9c9c;
+}
+.text-area {
+	margin: 0.4rem;
+	height: 4rem;
+	width: 25.5rem;
+	border: none;
+	border-radius: 0.6rem;
+	background-color: #9c9c9c;
+}
+.btn-primary {
+	padding: 0.6rem;
+	border-radius: 2rem;
+}
