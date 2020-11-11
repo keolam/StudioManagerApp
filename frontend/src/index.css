@@ -1,82 +1,84 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-  font-size: 100%;
+	font-size: 100%;
 }
 
-body {    
-  height: 100vh;
-  margin: 0px;
-  background-color: #0E0E0E;
-  color: #e26e62;
+body {
+	height: 100vh;
+	margin: 0px;
+	background-color: #0e0e0e;
+	color: #e26e62;
 }
 
 #background {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
 }
 
 #navbar {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background-color:  #0E0E0E;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  height: 14rem;
-  width: 100%;
-  color: #e26e62;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	background-color: #0e0e0e;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	height: 14rem;
+	width: 100%;
+	color: #e26e62;
 }
 
-.container{
-  margin-left: 8rem;
-  margin-right: 8rem;
-  position: relative;
-  background-position: 50% 50%;
+.container {
+	margin-left: 8rem;
+	margin-right: 8rem;
+	position: relative;
+	background-position: 50% 50%;
 }
 
 #create-button {
-  border-width: medium;
-  border-radius: 4rem;
-  font-family: 'Sintony', sans-serif;
-  height: 4rem;
-  width: 12rem;
-  margin-left: 3rem;
-  margin-bottom: -3rem;
-  background-color: #e3796d;
-  font-size: x-large;
+	border-width: medium;
+	border-radius: 4rem;
+	font-family: "Sintony", sans-serif;
+	height: 4rem;
+	width: 12rem;
+	margin-left: 3rem;
+	margin-bottom: -3rem;
+	background-color: #e3796d;
+	font-size: x-large;
 }
 .App-header {
-  background-color: #0E0E0E;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #0e0e0e;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #09d3ac;
+	color: #09d3ac;
 }
 #logo {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto; 
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
 }
-/*
-.App-logo {
-  height: 40vmin;
+
+@media only screen and (max-width: 1024px) {
+	body {
+		font-size: 80%;
+	}
 }
-*/
-/*
-li {
-  list-style-type: none;
+
+@media only screen and (max-width: 768px) {
+	body {
+		font-size: 20%;
+	}
 }
-*/
