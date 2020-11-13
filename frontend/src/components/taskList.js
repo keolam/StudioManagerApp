@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Task from './singleTask';
 import '../componentCSS/taskList.css';
 import axios from 'axios';
@@ -37,7 +37,7 @@ const TaskList = (props) => {
 
     return (
         <div>
-            <Router></Router>
+
             <div id="new-task-button">
                 <Link to="/create">
                     <button type="button" id="create-button">
@@ -61,6 +61,7 @@ const TaskList = (props) => {
                     <div id="complete">{complete()}</div>
                 </div>
             </div>
+  
         </div>
     )
 }

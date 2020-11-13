@@ -50,7 +50,6 @@ const EditTask = (props) => {
             .then(() => setTaskEdit(() => ({
                 ...taskEdit,
                 returnToList: true,
-                /*task_status: task_status*/
             })
             ))
             .catch(error => console.log(error)

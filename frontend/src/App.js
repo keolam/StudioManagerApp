@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import TaskList from "./components/taskList";
 import AddNewTask from "./components/create";
 import EditTask from "./components/edit";

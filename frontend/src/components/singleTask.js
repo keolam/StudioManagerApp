@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import '../componentCSS/singleTask.css';
 import axios from 'axios';
 
@@ -56,6 +56,7 @@ const Task = (props) => {
 
     return (
         <div className="single-task">
+            <Router>
             <div id="task-job">{props.thang.task_job}</div>
             <div id="notes">{props.thang.notes}</div>
             <div id="added-by"><font size="2">added by</font> {props.thang.added_by}</div>
@@ -80,6 +81,7 @@ const Task = (props) => {
                     </div>
                 </div>
             </div>
+            </Router>
         </div>
     )
 }
