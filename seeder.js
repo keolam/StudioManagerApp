@@ -5,7 +5,7 @@ const User = require('./models/User');
 
 const connectDB = require('./config/db');
 
-dotenv.config();
+dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const importData = async () => {
