@@ -61,7 +61,7 @@ exports.editTask = async (req, res, next) => {
 }    
 
 exports.deleteTask = async (req, res, next) => {
-    console.log("aahhhhhhhhhhhhh");
+    console.log("Task deleted");
     try {
         const singleTask = await Task.findById(req.params.id);
         if(!singleTask){
