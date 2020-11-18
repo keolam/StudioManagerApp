@@ -29,7 +29,7 @@ const EditTask = (props) => {
             .catch(function (error) {
                 console.log(error);
             })
-    }, []);
+    }, [props.match]);
 
     const onChangeTask = (e) => {
         setTaskEdit({ ...taskEdit, task_job: e.target.value });
