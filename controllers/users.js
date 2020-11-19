@@ -4,7 +4,6 @@ const User = require('../models/User');
 
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
@@ -15,8 +14,12 @@ const authUser = asyncHandler(async (req, res) => {
             isAdmin: user.isAdmin,
             token: generateToken(user._id)
         })
+    } else {
+        res.status(401);
+        throw new Error('Invalid Email or wrong password...Or maybe they\'re both wrong.');
     }
 })
+
 const getUsers = asyncHandler(async (req, res) => {
    
     const users = await User.find({});
@@ -24,5 +27,15 @@ const getUsers = asyncHandler(async (req, res) => {
     res.json(users)
 })
 
+const getUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    
+    if(user) {
+        res.json(user)
+    } else {
+        res.status(404)
+        throw new Error('User Not Found')
+    }
+})
 
-module.exports = { getUsers };
+module.exports = { authUser, getUsers, getUser };
