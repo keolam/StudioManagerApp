@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-const { getUsers, authUser, getUser } = require('../controllers/users');
+const { getUsers, authUser, getUserProfile, getUserById } = require('../controllers/users');
+const { protect } = require('../middleware/auth');
 
 router
     .route('/')
     .get(getUsers);
 
-/*router
-    .route('/login')
-    .post(authUser);*/
 router.post('/login', authUser);
 
 router
+    .route('/profile')
+    .get(protect, getUserProfile)
+
+router
   .route('/:id')
-  .get(getUser);  
+  .get(getUserById);  
 
 module.exports = router;
