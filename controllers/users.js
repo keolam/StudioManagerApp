@@ -29,7 +29,7 @@ const getUsers = asyncHandler(async (req, res) => {
 
 const getUserProfile = asyncHandler(async (req, res) => {
     
-    res.send('Success');    
+    /*res.send('Success');   */ 
     const user = await User.findById(req.user._id);
 
     if (user) {
