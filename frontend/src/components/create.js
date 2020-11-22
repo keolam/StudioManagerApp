@@ -45,6 +45,8 @@ const AddNewTask = () => {
             )
     }
 
+
+
     if (newTask.returnToList === true) {
         return <Redirect to='/' />
     }
