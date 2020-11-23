@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import '../componentCSS/createEdit.css';
-/*import styled from 'styled-components';*/
-
-/*const CreateForm = styled.form`
-    color: red;    
-     text-align: center;
-` ;*/
 
 const AddNewTask = () => {
 
@@ -28,28 +22,29 @@ const AddNewTask = () => {
     const onChangeNotes = (e) => {
         setValues({ ...newTask, notes: e.target.value });
     }
-    const onSubmit = (e) => {
+
+    const onSubmit = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/tasks', newTask)
-            .then(res => console.log(res.data))
-            .then(() => setValues(() => ({
+        try {
+            await axios.post('http://localhost:5000/tasks', newTask);
+
+            setValues({
                 task_job: '',
                 added_by: '',
                 notes: '',
                 task_status: 0,
                 returnToList: true
             })
-            )
-            )
-            .catch(error => console.log(error)
-            )
+        }
+        catch(error) {
+            console.log(error);
+        }
     }
-
-
 
     if (newTask.returnToList === true) {
         return <Redirect to='/' />
     }
+
     return (
 
         <div className="create-edit-form">
@@ -77,7 +72,3 @@ const AddNewTask = () => {
 }
 
 export default AddNewTask;
-/*
-<CreateForm>
- </CreateForm>
- */

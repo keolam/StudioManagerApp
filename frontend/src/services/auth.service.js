@@ -2,9 +2,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5000/users/";
 
-const login = (email, password) => {
-  return axios
-    .post(API_URL + "login", {
+const login = async (email, password) => {
+    try {
+        await axios.post(API_URL + "login", {
       email,
       password,
     })
@@ -15,6 +15,7 @@ const login = (email, password) => {
 
       return response.data;
     });
+}
 };
 
 const logout = () => {

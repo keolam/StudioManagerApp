@@ -14,21 +14,24 @@ const EditTask = (props) => {
         returnToList: false
     })
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/tasks/' + props.match.params.id)
-            .then(response => {
+    useEffect( () => {
+        try {
+            async function fetchTask() {
+                const taskEdit = await axios.get('http://localhost:5000/tasks/' + props.match.params.id);
+                
                 setTaskEdit({
-                    task_job: response.data.task_job,
-                    added_by: response.data.added_by,
-                    notes: response.data.notes,
-                    task_status: response.data.task_status,
+                    task_job: taskEdit.data.task_job,
+                    added_by: taskEdit.data.added_by,
+                    notes: taskEdit.data.notes,
+                    task_status: taskEdit.data.task_status,
                     returnToList: false
                 })
-                console.log("Mounted!");
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+            }
+            fetchTask();
+        } 
+        catch (error) {
+            console.log(error); 
+        }        
     }, [props.match]);
 
     const onChangeTask = (e) => {
@@ -42,18 +45,20 @@ const EditTask = (props) => {
     const onChangeNotes = (e) => {
         setTaskEdit({ ...taskEdit, notes: e.target.value });
     }
-    const onSubmit = (e) => {
-        e.preventDefault();
 
-        axios.post('http://localhost:5000/tasks/' + props.match.params.id, taskEdit)
-            .then(res => console.log(props.match.params.id + res.data))
-            .then(() => setTaskEdit(() => ({
-                ...taskEdit,
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let updatedTask = await axios.post('http://localhost:5000/tasks/' + props.match.params.id, taskEdit)
+            
+            setTaskEdit({
+                ...updatedTask,
                 returnToList: true,
             })
-            ))
-            .catch(error => console.log(error)
-            );
+        }
+        catch(error) {
+            console.log(error)
+        }
     }
 
     if (taskEdit.returnToList === true) {

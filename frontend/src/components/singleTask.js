@@ -4,54 +4,58 @@ import '../componentCSS/singleTask.css';
 import axios from 'axios';
 
 const Task = (props) => {
+
     const [task_status, setTaskStatus] = useState(props.thang.task_status)
 
-    const moveLeft = (props) => {
+    const moveLeft = async (props) => {
+
         if (task_status > 0) {
             let obj = {
-                task_job: props.thang.task_job,
-                added_by: props.thang.added_by,
-                notes: props.thang.notes,
+                ...props.thang,
                 task_status: task_status - 1
             }
-            axios.post('http://localhost:5000/tasks/' + props.thang._id, obj)
-                .then(res => {
-                    console.log("Moved Left " + res.data);
-                    setTaskStatus(obj.task_status);
-                    window.location.reload();
-                })
-                .catch(error => console.log(error));
+            try {
+                await axios.post('http://localhost:5000/tasks/' + props.thang._id, obj);
+                setTaskStatus(obj.task_status);
+                console.log(`spread ${obj}`);
+            }  
+            catch(error) {
+                console.log(error);
+            }
+            window.location.reload();  
         }
     }
 
-    const moveRight = (props) => {
+    const moveRight = async (props) => {
+
         if (task_status < 2) {
             let obj = {
-                task_job: props.thang.task_job,
-                added_by: props.thang.added_by,
-                notes: props.thang.notes,
-                task_status: props.thang.task_status + 1
+                ...props.thang,
+                task_status: task_status + 1
             }
-            console.log('move right');
-            axios.post('http://localhost:5000/tasks/' + props.thang._id, obj)
-                .then(res => {
-                    console.log("Moved Right " + res.data);
-                    setTaskStatus(obj.task_status);
-                    window.location.reload();
-                })
-                .catch(error => console.log(error));
-        }
+            try {
+                await axios.post('http://localhost:5000/tasks/' + props.thang._id, obj); 
+                setTaskStatus(obj.task_status);
+                console.log(`spreaded ${obj}`);
+            }
+            catch(error) {
+                console.log(error);
+            } 
+            window.location.reload();
+        }      
     }
 
-    const deleteTask = (props) => {
-        console.log(props.thang._id);
-        axios.delete('http://localhost:5000/tasks/' + props.thang._id)
-            .then(res => {
-                console.log('Deleted');
-                setTaskStatus(props.thang.task_status);
-                window.location.reload();
-            })
-            .catch(error => console.log(error));
+    const deleteTask = async (props) => {
+ 
+        try {
+            const task = await axios.delete('http://localhost:5000/tasks/' + props.thang._id);
+            console.log(`${ task } Deleted`);
+            setTaskStatus(props.thang.task_status);
+        }
+        catch(error) {
+            console.log(error)
+        }
+        window.location.reload();
     }
 
     return (
