@@ -29,7 +29,7 @@ const TaskList = (props) => {
     useEffect(() => {
         try {
             async function fetchTasks() {
-                const taskList = await axios.get('http://localhost:5000/tasks/');
+                const taskList = await axios.get('/api/tasks/');
                 setTaskList(taskList.data.data);
                 console.log('mounted ', taskList.data.data);
             }
@@ -42,26 +42,35 @@ const TaskList = (props) => {
 
     return (
         <div>
-            <div id="new-task-button">
-                <Link to="/create">
-                    <button type="button" id="create-button">
-                        Add new Task
-                    </button>
-                </Link>
+            <div id="button-bar">
+                <div id="new-task-button">
+                    <Link to="/create">
+                        <button type="button" id="create-button">
+                            Add new Task
+                        </button>
+                    </Link>
+                </div>
+                <div id="login-button">
+                    <Link to="/login">
+                        <button type="button" id="create-button">
+                            Admin Log In
+                        </button>
+                    </Link>
+                </div>
             </div>
             <div id="progress_box">
 
-                <div className="columns">
+                <div className="columns" data-aos="fade-in" data-aos-delay="300">
                     <p className="col-title"> Inbox </p>
                     <div id="inbox">{inbox()}</div>
                 </div>
 
-                <div className="columns">
+                <div className="columns" data-aos="fade-in" data-aos-delay="500">
                     <p className="col-title"> In Progress </p>
                     <div id="in-progress">{inProgress()}</div>
                 </div>
 
-                <div className="columns">
+                <div className="columns" data-aos="fade-in" data-aos-delay="800">
                     <p className="col-title"> Completed </p>
                     <div id="complete">{complete()}</div>
                 </div>

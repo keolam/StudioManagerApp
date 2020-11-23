@@ -15,7 +15,7 @@ const Task = (props) => {
                 task_status: task_status - 1
             }
             try {
-                await axios.post('http://localhost:5000/tasks/' + props.thang._id, obj);
+                await axios.post('/api/tasks/' + props.thang._id, obj);
                 setTaskStatus(obj.task_status);
                 console.log(`spread ${obj}`);
             }  
@@ -34,7 +34,7 @@ const Task = (props) => {
                 task_status: task_status + 1
             }
             try {
-                await axios.post('http://localhost:5000/tasks/' + props.thang._id, obj); 
+                await axios.post('/api/tasks/' + props.thang._id, obj); 
                 setTaskStatus(obj.task_status);
                 console.log(`spreaded ${obj}`);
             }
@@ -48,7 +48,7 @@ const Task = (props) => {
     const deleteTask = async (props) => {
  
         try {
-            const task = await axios.delete('http://localhost:5000/tasks/' + props.thang._id);
+            const task = await axios.delete('/api/tasks/' + props.thang._id);
             console.log(`${ task } Deleted`);
             setTaskStatus(props.thang.task_status);
         }

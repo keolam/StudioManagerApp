@@ -17,7 +17,7 @@ const EditTask = (props) => {
     useEffect( () => {
         try {
             async function fetchTask() {
-                const taskEdit = await axios.get('http://localhost:5000/tasks/' + props.match.params.id);
+                const taskEdit = await axios.get('/api/tasks/' + props.match.params.id);
                 
                 setTaskEdit({
                     task_job: taskEdit.data.task_job,
@@ -49,7 +49,7 @@ const EditTask = (props) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            let updatedTask = await axios.post('http://localhost:5000/tasks/' + props.match.params.id, taskEdit)
+            let updatedTask = await axios.post('/api/tasks/' + props.match.params.id, taskEdit)
             
             setTaskEdit({
                 ...updatedTask,
@@ -65,7 +65,7 @@ const EditTask = (props) => {
         return <Redirect to='/' />
     }
     return (
-        <div className="create-edit-form">
+        <div className="create-edit-form" data-aos="fade-in" data-aos-delay="500">
             <h1 align="center">Update Task</h1>
             <form onSubmit={onSubmit}>
                 <div className="form-group">

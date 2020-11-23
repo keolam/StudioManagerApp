@@ -26,7 +26,7 @@ const AddNewTask = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/tasks', newTask);
+            await axios.post('/api/tasks', newTask);
 
             setValues({
                 task_job: '',
@@ -47,7 +47,7 @@ const AddNewTask = () => {
 
     return (
 
-        <div className="create-edit-form">
+        <div className="create-edit-form" data-aos="fade-in" data-aos-delay="500">
             <h1>New Task</h1>
             <form onSubmit={onSubmit} id="submit-cells">
                 <div className="form-group">
