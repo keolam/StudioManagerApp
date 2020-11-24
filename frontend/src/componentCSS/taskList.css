@@ -40,11 +40,21 @@
 #create-button {
 	height: 2rem;
 	border: none;
+	font-size: 0.6rem;
+}
+#login-button {
+	height: 2rem;
+	border: none;
+	font-size: 0.6rem;
 }
 
 #new-task-button {
-	border: none;
 	height: 5rem;
+	border: none;
+}
+#login {
+	height: 5rem;
+	border: none;
 }
 
 #create-button:hover {

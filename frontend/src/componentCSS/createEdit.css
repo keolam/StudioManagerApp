@@ -54,6 +54,13 @@ h1 {
 	border: none;
 	border-radius: 0.6rem;
 	background-color: #9c9c9c;
+	text-align: left;
+	text-orientation: sideways;
+	padding: 0.2rem;
+}
+.text-area span {
+	overflow: auto;
+	flex-wrap: wrap;
 }
 .btn-primary {
 	padding: 0.6rem;

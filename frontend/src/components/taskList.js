@@ -45,15 +45,15 @@ const TaskList = (props) => {
             <div id="button-bar">
                 <div id="new-task-button">
                     <Link to="/create">
-                        <button type="button" id="create-button">
+                        <button type="button" className="create-button">
                             Add new Task
                         </button>
                     </Link>
                 </div>
-                <div id="login-button">
+                <div id="login">
                     <Link to="/login">
-                        <button type="button" id="create-button">
-                            Admin Log In
+                        <button type="button" className="create-button">
+                            Log In
                         </button>
                     </Link>
                 </div>

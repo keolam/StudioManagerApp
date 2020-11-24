@@ -15,7 +15,7 @@ const Login = () => {
     return (
         
         <div className="create-edit-form" data-aos="fade-in" data-aos-delay="500">
-            <h1>Admin Log In</h1>
+            <h1>User Log In</h1>
             <form>
             <div className="form-group">
                     <label htmlFor="email">Email:</label>
