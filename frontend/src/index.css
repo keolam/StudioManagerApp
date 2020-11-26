@@ -45,10 +45,11 @@ body {
 .create-button {
 	border-width: medium;
 	border-radius: 4rem;
+	border: none;
 	font-family: "Sintony", sans-serif;
 	height: 3rem;
 	width: 12rem;
-	margin-left: 3rem;
+	/*margin-left: 3rem;*/
 	margin-bottom: -3rem;
 	background-color: #e3796d;
 	font-size: large;
