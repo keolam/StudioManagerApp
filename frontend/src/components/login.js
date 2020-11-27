@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = (props) => {
 
-    const [data, setData] = useState({
+    const [userData, setUserData] = useState({
+        name: '',
         email: '',
-        password: ''
+        password: '',
+        returnToList: false
     })
-    const { email, password } = data;
+
+    const { name, email, password, returnToList } = userData;
 
     const handleChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value });
+        setUserData({ ...userData, [e.target.name]: e.target.value });
     }
 
     const onSubmit = async (e) => {
@@ -24,13 +27,23 @@ const Login = (props) => {
                     },
                 }
             );
-            console.log(`Token returned: ${res.data.token}`)
-            /*localStorage.setItem('token', res.data.token);*/
+            
+            localStorage.setItem('token', res.data.token);
+           
+            setUserData({ ...userData, returnToList: true, name: res.data.name})
+            console.log(name);
+            console.log(returnToList);
+            /*props.history.push('/');*/
         }
         catch(error) {
             console.log(error);
         }
-    };
+    }
+
+    if (userData.returnToList === true) {
+        /*console.log("aaaahhhhhhhh")*/
+        return <Redirect to='/' />
+    }
 
     return (
         

@@ -9,12 +9,11 @@ router
   .get(getTasks)
   .post(addTask);
 
-
 router
   .route('/:id')
   .get(getTask)
   .post(editTask)
-  .delete(deleteTask);
+  .delete(protect, deleteTask);
 
 module.exports = router;
 
