@@ -31,8 +31,8 @@ const Login = (props) => {
             localStorage.setItem('token', res.data.token);
            
             setUserData({ ...userData, returnToList: true, name: res.data.name})
-            console.log(name);
-            console.log(returnToList);
+            console.log(res.data.name);
+            console.log(userData.returnToList);
             /*props.history.push('/');*/
         }
         catch(error) {
