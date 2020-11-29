@@ -46,9 +46,16 @@ const Task = (props) => {
     }
 
     const deleteTask = async (props) => {
- 
+        let webToken = await localStorage.getItem('token');
+        console.log(webToken);
         try {
-            const task = await axios.delete('/api/tasks/' + props.thang._id);
+            const task = await axios.delete('/api/tasks/' + props.thang._id,
+            {
+                headers: {
+                    'Content-type': 'application/json',
+                    'authorization': `Bearer ${webToken}`
+                },
+            })
             console.log(`${ task } Deleted`);
             setTaskStatus(props.thang.task_status);
         }

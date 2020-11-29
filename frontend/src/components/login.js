@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = (props) => {
@@ -7,11 +6,10 @@ const Login = (props) => {
     const [userData, setUserData] = useState({
         name: '',
         email: '',
-        password: '',
-        returnToList: false
+        password: ''
     })
 
-    const { name, email, password, returnToList } = userData;
+    /*const { name, email, password, returnToList } = userData;*/
 
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -20,29 +18,26 @@ const Login = (props) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/users/login', {email, password},
+            const res = await axios.post('/api/users/login', userData,
                 {
                     headers: {
-                        "Content-type": "application/json",
+                        'Content-type': 'application/json',
                     },
                 }
             );
             
-            localStorage.setItem('token', res.data.token);
+            sessionStorage.setItem('user', JSON.stringify(res.data));
            
             setUserData({ ...userData, returnToList: true, name: res.data.name})
-            console.log(res.data.name);
-            console.log(userData.returnToList);
-            /*props.history.push('/');*/
+            /*const currentUser = localStorage.getItem('user');
+            console.log(currentUser);*/
+
+            props.history.push('/');
+            window.location.reload();
         }
         catch(error) {
             console.log(error);
         }
-    }
-
-    if (userData.returnToList === true) {
-        /*console.log("aaaahhhhhhhh")*/
-        return <Redirect to='/' />
     }
 
     return (
@@ -52,11 +47,11 @@ const Login = (props) => {
             <form onSubmit={onSubmit}>
             <div className="form-group">
                     <label >Email:</label>
-                    <input type="email" className="form-control" name="email" value={email} onChange={handleChange} />
+                    <input type="email" className="form-control" name="email" value={userData.email} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password"  className="form-control" name="password" value={password} onChange={handleChange} />
+                    <input type="password"  className="form-control" name="password" value={userData.password} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <input type="submit" value="Log In" className="btn-primary" />

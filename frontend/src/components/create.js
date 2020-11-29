@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import '../componentCSS/createEdit.css';
 
-const AddNewTask = () => {
+const AddNewTask = (props) => {
 
     const [newTask, setValues] = useState({
         task_job: '',
@@ -13,14 +12,8 @@ const AddNewTask = () => {
         returnToList: false
     })
 
-    const onChangeTask = (e) => {
-        setValues({ ...newTask, task_job: e.target.value });
-    }
-    const onChangeAddedBy = (e) => {
-        setValues({ ...newTask, added_by: e.target.value });
-    }
-    const onChangeNotes = (e) => {
-        setValues({ ...newTask, notes: e.target.value });
+    const handleChange = (e) => {
+        setValues({ ...newTask, [e.target.name]: e.target.value });
     }
 
     const onSubmit = async (e) => {
@@ -32,17 +25,15 @@ const AddNewTask = () => {
                 task_job: '',
                 added_by: '',
                 notes: '',
-                task_status: 0,
-                returnToList: true
-            })
+                task_status: 0
+
+            });
+            props.history.push('/');
+            window.location.reload();
         }
         catch(error) {
             console.log(error);
         }
-    }
-
-    if (newTask.returnToList === true) {
-        return <Redirect to='/' />
     }
 
     return (
@@ -52,15 +43,15 @@ const AddNewTask = () => {
             <form onSubmit={onSubmit} id="submit-cells">
                 <div className="form-group">
                     <label>Task:</label>
-                    <input type="text" className="form-control" value={newTask.task_job} onChange={onChangeTask} />
+                    <input type="text" className="form-control" name="task_job" value={newTask.task_job} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label>Added By: </label>
-                    <input type="text" className="added-by" value={newTask.added_by} onChange={onChangeAddedBy} />
+                    <input type="text" className="added-by" name="added_by" value={newTask.added_by} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label>Details/Notes: </label>
-                    <input type="textarea" className="text-area" value={newTask.notes} onChange={onChangeNotes}/>
+                    <input type="textarea" className="text-area" name="notes" value={newTask.notes} onChange={handleChange}/>
                 </div>
                 <div className="form-group">
                     <input type="submit" value="Add Task" className="btn-primary" />

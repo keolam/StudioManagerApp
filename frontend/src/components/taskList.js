@@ -26,6 +26,7 @@ const TaskList = (props) => {
         })
     }
 
+
     useEffect(() => {
         try {
             async function fetchTasks() {
@@ -34,6 +35,8 @@ const TaskList = (props) => {
                 console.log('mounted ', taskList.data.data);
             }
             fetchTasks();
+            jwtCurrent = true;
+           /* if () */
         }
         catch (error) {
             console.log(error);
@@ -51,9 +54,15 @@ const TaskList = (props) => {
                     </Link>
                 </div>
                 <div id="login">
-                    <Link to="/login">
-                        <button type="button" className="create-button">
-                            Log In
+                    <Link to={`${jwtCurrent} ?  /login : /`}>
+                        <button 
+                            type="button" 
+                            className="create-button"
+                            onClick={() => jwtCurrent ? props.logout : props.login}>
+                                {jwtCurrent 
+                                ? <div>Log out</div> 
+                                : <div>Log in</div>
+                                }
                         </button>
                     </Link>
                 </div>
