@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const TaskList = (props) => {
     const [taskList, setTaskList] = useState([]);
+    const [currentUser, setCurrentUser] = useState([]);
 
     const inbox = () => {
         let filteredRes = taskList.filter(tasksObj => tasksObj.task_status === 0);
@@ -28,6 +29,7 @@ const TaskList = (props) => {
 
 
     useEffect(() => {
+        let jwtCurrent = false;
         try {
             async function fetchTasks() {
                 const taskList = await axios.get('/api/tasks/');
