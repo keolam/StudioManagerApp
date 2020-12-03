@@ -9,8 +9,6 @@ const Login = (props) => {
         password: ''
     })
 
-    /*const { name, email, password, returnToList } = userData;*/
-
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
     }

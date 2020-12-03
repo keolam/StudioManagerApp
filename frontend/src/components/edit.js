@@ -11,23 +11,24 @@ const EditTask = (props) => {
         task_status: 0,
     })
 
-    const fetchTask = async () => {
-        try {
-            const taskEdit = await axios.get('/api/tasks/' + props.match.params.id);
-            
-            setTaskEdit({
-                task_job: taskEdit.data.task_job,
-                added_by: taskEdit.data.added_by,
-                notes: taskEdit.data.notes,
-                task_status: taskEdit.data.task_status,
-            })
-        }
-        catch (error) {
-            console.log(error); 
-        }
-    } 
-    
     useEffect(() => {
+        const fetchTask = async () => {
+            try {
+                const taskEdit = await axios.get('/api/tasks/' + props.match.params.id);
+                
+                setTaskEdit({
+                    task_job: taskEdit.data.task_job,
+                    added_by: taskEdit.data.added_by,
+                    notes: taskEdit.data.notes,
+                    task_status: taskEdit.data.task_status,
+                })
+            }
+            catch (error) {
+                console.log(error); 
+            }
+        } 
+    
+
 
         fetchTask()
     }, [props.match]);

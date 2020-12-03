@@ -5,9 +5,30 @@ import '../componentCSS/taskList.css';
 import axios from 'axios';
 
 const TaskList = (props) => {
-    const [taskList, setTaskList] = useState([]);
-    const [currentUser, setCurrentUser] = useState([]);
+    
+    const [sessionUser, setSessionUser] = useState([]);
 
+    useEffect(() => {
+        let currentUser = sessionStorage.getItem('user');
+        if (currentUser) {   
+            let token = JSON.parse(currentUser).token;
+            try {
+                async function verifyToken() {
+                    const taskList = await axios.get('/api/users/');
+                    setSessionUser(currentUser.name)
+                }
+            
+            } catch (error) {
+                console.log(error)
+            }
+
+        } else {
+            console.log("Logged in as guest");
+        }
+    }, [])
+
+    const [taskList, setTaskList] = useState([]);
+   
     const inbox = () => {
         let filteredRes = taskList.filter(tasksObj => tasksObj.task_status === 0);
         return filteredRes.map(function (currentTask, i) {
@@ -29,7 +50,6 @@ const TaskList = (props) => {
 
 
     useEffect(() => {
-        let jwtCurrent = false;
         try {
             async function fetchTasks() {
                 const taskList = await axios.get('/api/tasks/');
@@ -37,8 +57,7 @@ const TaskList = (props) => {
                 console.log('mounted ', taskList.data.data);
             }
             fetchTasks();
-            jwtCurrent = true;
-           /* if () */
+            
         }
         catch (error) {
             console.log(error);
@@ -56,12 +75,10 @@ const TaskList = (props) => {
                     </Link>
                 </div>
                 <div id="login">
-                    <Link to={`${jwtCurrent} ?  /login : /`}>
-                        <button 
-                            type="button" 
-                            className="create-button"
-                            onClick={() => jwtCurrent ? props.logout : props.login}>
-                                {jwtCurrent 
+                    <Link to="/login">
+                        <button type="button" className="create-button" >
+                           
+                                {sessionUser 
                                 ? <div>Log out</div> 
                                 : <div>Log in</div>
                                 }

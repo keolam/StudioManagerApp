@@ -9,7 +9,6 @@ const AddNewTask = (props) => {
         added_by: '',
         notes: '',
         task_status: 0,
-        returnToList: false
     })
 
     const handleChange = (e) => {
