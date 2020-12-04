@@ -26,7 +26,7 @@ const Login = (props) => {
             
             sessionStorage.setItem('user', JSON.stringify(res.data));
            
-            setUserData({ ...userData, returnToList: true, name: res.data.name})
+            setUserData({ ...userData, name: res.data.name})
             /*const currentUser = localStorage.getItem('user');
             console.log(currentUser);*/
 

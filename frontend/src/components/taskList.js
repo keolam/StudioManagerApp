@@ -2,29 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Task from './singleTask';
 import '../componentCSS/taskList.css';
+import  verifyLogin from '../services/VerifyUser';
 import axios from 'axios';
 
 const TaskList = (props) => {
     
     const [sessionUser, setSessionUser] = useState([]);
+    let user = verifyLogin()
 
     useEffect(() => {
-        let currentUser = sessionStorage.getItem('user');
-        if (currentUser) {   
-            let token = JSON.parse(currentUser).token;
-            try {
-                async function verifyToken() {
-                    const taskList = await axios.get('/api/users/');
-                    setSessionUser(currentUser.name)
-                }
-            
-            } catch (error) {
-                console.log(error)
-            }
 
-        } else {
-            console.log("Logged in as guest");
-        }
+        setSessionUser( user )
     }, [])
 
     const [taskList, setTaskList] = useState([]);
