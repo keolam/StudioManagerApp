@@ -15,6 +15,7 @@ const verifyLogin = async () => {
           })
           return user.data;
       }
+      
       catch (error) {
           console.log(error)
       }
