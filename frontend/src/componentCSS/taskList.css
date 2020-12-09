@@ -53,7 +53,7 @@
 	align-content: flex-start;
 	border: none;
 }
-#login {
+.log-in-out {
 	height: 5rem;
 	border: none;
 }

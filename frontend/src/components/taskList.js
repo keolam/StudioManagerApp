@@ -7,15 +7,17 @@ import axios from 'axios';
 
 const TaskList = (props) => {
     
-    const [sessionUser, setSessionUser] = useState([]);
     let user = verifyLogin()
+    const [sessionUser, setSessionUser] = useState([]);
+    
 
     useEffect(() => {
 
-        setSessionUser( user )
+        setSessionUser( sessionUser.name );
+        
     }, [])
 
-    
+
     const [taskList, setTaskList] = useState([]);
    
     const inbox = () => {
@@ -36,6 +38,9 @@ const TaskList = (props) => {
             return <Task thang={currentTask} key={i} />;
         })
     }
+    const logout = () => {
+        sessionStorage.removeItem("user");
+      };
 
 
     useEffect(() => {
@@ -63,16 +68,17 @@ const TaskList = (props) => {
                         </button>
                     </Link>
                 </div>
-                <div id="login">
+                <div className="log-in-out">
                     <Link to="/login">
                         <button type="button" className="create-button" >
-                           
-                                {sessionUser 
-                                ? <div>Log out</div> 
-                                : <div>Log in</div>
-                                }
+                            LogIn
                         </button>
                     </Link>
+                </div>
+                <div className="log-in-out">
+                    <button type="button" onClick={() => logout()} className="create-button" >
+                    LogOut
+                    </button>
                 </div>
             </div>
             <div id="progress_box">

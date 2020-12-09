@@ -17,10 +17,11 @@ const verifyLogin = async () => {
                     'authorization': `Bearer ${webToken}`
                 }
             })
+            console.log(user.data);
             return user.data;
 
         }
-        catch (error) {s
+        catch (error) {
             console.log(error)
         }
     } else {
