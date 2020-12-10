@@ -8,7 +8,8 @@ import axios from 'axios';
 const TaskList = (props) => {
     
     let user = verifyLogin()
-    const [sessionUser, setSessionUser] = useState([]);
+    console.log(`aaaaaand user is ${user}`)
+    const [sessionUser, setSessionUser] = useState(user);
     
 
     useEffect(() => {

@@ -11,7 +11,6 @@ const verifyLogin = async () => {
 
             const user = await axios.get('/api/users/profile',
             {
-                     
                 headers: {
                     'Content-type': 'application/json',
                     'authorization': `Bearer ${webToken}`
@@ -25,10 +24,10 @@ const verifyLogin = async () => {
             console.log(error)
         }
     } else {
-
+      console.log('token invalid');
       sessionStorage.clear();
     }
-    console.log("Please Login");
+    console.log('Unregistered');
     return; 
 }
 

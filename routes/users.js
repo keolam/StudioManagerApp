@@ -12,7 +12,7 @@ router.post('/login', authUser);
 
 router
     .route('/profile')
-    .get(protect, getUserProfile)
+    .get(/*protect,*/ getUserProfile)
 
 router
   .route('/:id')
