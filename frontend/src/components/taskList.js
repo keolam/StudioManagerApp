@@ -11,13 +11,11 @@ const TaskList = (props) => {
     console.log(`aaaaaand user is ${user}`)
     const [sessionUser, setSessionUser] = useState(user);
     
-
     useEffect(() => {
 
         setSessionUser( sessionUser.name );
         
     }, [])
-
 
     const [taskList, setTaskList] = useState([]);
    
