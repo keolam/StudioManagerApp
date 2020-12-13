@@ -7,15 +7,7 @@ import axios from 'axios';
 
 const TaskList = (props) => {
     
-    let user = verifyLogin()
-    console.log(`aaaaaand user is ${user}`)
-    const [sessionUser, setSessionUser] = useState(user);
     
-    useEffect(() => {
-
-        setSessionUser( sessionUser.name );
-        
-    }, [])
 
     const [taskList, setTaskList] = useState([]);
    
@@ -39,8 +31,7 @@ const TaskList = (props) => {
     }
     const logout = () => {
         sessionStorage.removeItem("user");
-      };
-
+    };
 
     useEffect(() => {
         try {
@@ -56,6 +47,16 @@ const TaskList = (props) => {
             console.log(error);
         }
     }, [])
+
+    let user = verifyLogin()
+    console.log(`aaaaaand user is ${user}`)
+    const [sessionUser, setSessionUser] = useState(user);
+    
+    useEffect(() => {
+        if (sessionUser) {
+        setSessionUser( sessionUser.name );
+    }
+    }, [sessionUser])
 
     return (
         <div>
