@@ -26,11 +26,12 @@ const verifyLogin = async () => {
     } else {
       console.log('token invalid');
       sessionStorage.clear();
-      return;
     }
     console.log('Unregistered');
-    return; 
+    currentUser = { };
+    currentUser.name = 'Intern';
+    console.log(currentUser);
+    return currentUser
 }
-
 
 export default verifyLogin;

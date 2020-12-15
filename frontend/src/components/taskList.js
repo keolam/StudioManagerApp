@@ -53,9 +53,8 @@ const TaskList = (props) => {
     const [sessionUser, setSessionUser] = useState(user);
     
     useEffect(() => {
-        if (sessionUser) {
-        setSessionUser( sessionUser.name );
-    }
+    
+        setSessionUser( sessionUser );
     }, [sessionUser])
 
     return (
