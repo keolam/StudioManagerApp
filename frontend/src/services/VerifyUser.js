@@ -4,7 +4,7 @@ import axios from 'axios';
 const verifyLogin = async () => {
 
     let currentUser = sessionStorage.getItem('user');
-    if (currentUser) {   
+    if (currentUser !== null) {   
 
         let webToken = JSON.parse(currentUser).token;
         try {
@@ -21,11 +21,11 @@ const verifyLogin = async () => {
 
         }
         catch (error) {
-            console.log(error)
+            console.log(error);
+            sessionStorage.clear();
+            console.log('token invalid');
+      
         }
-    } else {
-      console.log('token invalid');
-      sessionStorage.clear();
     }
     console.log('Unregistered');
     currentUser = { };

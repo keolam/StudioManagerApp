@@ -55,7 +55,7 @@ const TaskList = (props) => {
     useEffect(() => {
     
         setSessionUser( sessionUser );
-    }, [sessionUser])
+    }, [/*sessionUser*/])
 
     return (
         <div>
@@ -67,14 +67,14 @@ const TaskList = (props) => {
                         </button>
                     </Link>
                 </div>
-                <div className="log-in-out">
+                <div className="log-in-out" style={{display: sessionUser.name === 'Intern' ? 'inline' : 'none'}}>
                     <Link to="/login">
                         <button type="button" className="create-button" >
                             LogIn
                         </button>
                     </Link>
                 </div>
-                <div className="log-in-out">
+                <div className="log-in-out"style={{display: sessionUser.name === 'Intern' ? 'none' : 'inline'}}>
                     <button type="button" onClick={() => logout()} className="create-button" >
                     LogOut
                     </button>
