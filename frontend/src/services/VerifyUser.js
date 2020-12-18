@@ -17,6 +17,12 @@ const verifyLogin = async () => {
                 }
             })
             console.log(user.data);
+            if (user.status === 401) {
+                currentUser = { };
+                currentUser.name = 'Intern';
+                console.log(currentUser);
+                return currentUser
+            }
             return user.data;
 
         }
