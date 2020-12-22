@@ -54,7 +54,7 @@ const TaskList = (props) => {
     
     useEffect(() => {
         setSessionUser( sessionUser );
-    }, [/*sessionUser*/])
+    }, [sessionUser])
 
     return (
         <div>
