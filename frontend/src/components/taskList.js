@@ -33,12 +33,20 @@ const TaskList = (props) => {
         sessionStorage.removeItem("user");
     };
 
+    let user = verifyLogin()
+    console.log(`User is ${user}`)
+    const [sessionUser, setSessionUser] = useState(user);
+    
+    useEffect(() => {
+        setSessionUser( sessionUser );
+    }, [sessionUser])
     useEffect(() => {
         try {
             async function fetchTasks() {
                 const taskList = await axios.get('/api/tasks/');
                 setTaskList(taskList.data.data);
                 console.log('mounted ', taskList.data.data);
+                console.log(sessionUser._id)
             }
             fetchTasks();
             
@@ -48,13 +56,7 @@ const TaskList = (props) => {
         }
     }, [])
 
-    let user = verifyLogin()
-    console.log(`aaaaaand user is ${user}`)
-    const [sessionUser, setSessionUser] = useState(user);
     
-    useEffect(() => {
-        setSessionUser( sessionUser );
-    }, [sessionUser])
 
     return (
         <div>
