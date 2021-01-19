@@ -53,11 +53,15 @@
 	align-content: flex-start;
 	border: none;
 }
-.log-in-out {
+
+#log-in {
 	height: 5rem;
 	border: none;
 }
-
+#log-out {
+	height: 5rem;
+	border: none;
+}
 .create-button:hover {
 	background-color: bisque;
 }
